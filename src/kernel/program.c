@@ -110,6 +110,21 @@ void schedule(ProgramManeger *pm) {
     } else if (pm->running->status == DEAD) {
         if (!pm->running->page_directory_addr) {
             release_pcb(pm->running);
+        } else {
+            ListItem* item = li_front(&pm->all_programs)->next;
+            PCB *temp;
+            Bool hasParent = false; 
+            while (item) {
+                temp = ListItem2PCB(item, tag_in_all_list);
+                if (temp->pid == pm->running->parent_pid) {
+                    hasParent = true;
+                    break;
+                }
+            }
+
+            if (!hasParent) {
+                release_pcb(pm->running);
+            }
         }
     }
 

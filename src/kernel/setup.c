@@ -18,29 +18,30 @@ void zero_process() {
     asm_halt();
 }
 
-void first_process()
-{
+void fork_test() {
+    int pid = fork();
+    if (pid) {
+        printf("I am sup-process and return: %d\n", pid);
+    } else {
+        printf("I am sub-process and return: %d\n", pid);
+    }
+    asm_halt();
+}
+
+void first_process() {
     int pid = fork();
     int retval;
-
-    if (pid)
-    {
+    if (pid) {
         pid = fork();
-        if (pid)
-        {
-            while ((pid = wait(&retval)) != -1)
-            {
+        if (pid) {
+            while ((pid = wait(&retval)) != -1) {
                 printf("wait for a child process, pid: %d, return value: %d\n", 
                        pid, retval);
             }
-
-            printf("all child process exit, programs: %d\n", 
-                   li_size(&program_maneger.all_programs));
-            
+            printf("all child process exit, programs: %d\n", li_size(&program_maneger.all_programs));    
             asm_halt();
         }
-        else
-        {
+        else {
             uint32 tmp = 0xffffff;
             while (tmp)
                 --tmp;
@@ -48,13 +49,21 @@ void first_process()
             exit(114514);
         }
     }
-    else
-    {
+    else {
         uint32 tmp = 0xffffff;
         while (tmp)
             --tmp;
         printf("exit, pid: %d\n", program_maneger.running->pid);
         exit(-1919810);
+    }
+}
+
+void zombie() {
+    int pid = fork();
+    if (pid) {
+        exit(114);
+    } else {
+        asm_halt();
     }
 }
 
@@ -64,10 +73,10 @@ void thread_to_exit(void *args) {
 }
 
 void first_thread(void* args) {
-    printf("start process:\n");
-    execute_process(&program_maneger, (char*)zero_process, 2);
-    execute_process(&program_maneger, (char*)first_process, 1);
-    execute_thread(&program_maneger, (ThreadFunc)thread_to_exit, 0, "second", 1);
+    // execute_process(&program_maneger, (char*)zero_process, 2);
+    execute_process(&program_maneger, (char*)fork_test, 1);
+    // execute_process(&program_maneger, (char*)first_process, 1);
+    //execute_thread(&program_maneger, (ThreadFunc)thread_to_exit, 0, "second", 1);
     asm_halt();
 }
 

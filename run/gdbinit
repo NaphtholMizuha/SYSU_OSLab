@@ -1,3 +1,6 @@
 target remote:1234
 file ../build/kernel.o
 set disassembly-flavor intel
+layout regs
+b asm_start_process
+b pm_fork

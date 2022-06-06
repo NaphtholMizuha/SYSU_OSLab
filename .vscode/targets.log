@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Tue May 31 14:33:58 2022
+# Make data base, printed on Mon Jun  6 08:45:21 2022
 
 # Variables
 
@@ -44,7 +44,7 @@ INFOPATH = /usr/local/share/info:
 # environment
 P9K_SSH = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/ht/28tqbtqx5xv_6s6b979zv4b80000gq/T/vscode-ipc-0da36cbf-ecaf-48ff-8b57-3b0555b25c8a.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/ht/28tqbtqx5xv_6s6b979zv4b80000gq/T/vscode-ipc-af67ab7d-4e4b-4348-b3f1-354cb30e5f91.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -60,11 +60,11 @@ RUSTUP_DIST_SERVER = https://mirrors.ustc.edu.cn/rust-static
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.uTELR7mA1z/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.3djXMeQFQL/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.cRsBwnRMhD/org.xquartz:0
+DISPLAY = /private/tmp/com.apple.launchd.B2bSMiyz5i/org.xquartz:0
 # environment
 all_proxy = socks5://127.0.0.1:7890
 # environment
@@ -88,7 +88,7 @@ VSCODE_CODE_CACHE_PATH = /Users/naphtholmizuha/Library/Application Support/Code/
 # environment
 LOGNAME = naphtholmizuha
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 ZSH = /Users/naphtholmizuha/.oh-my-zsh
 # environment
@@ -132,7 +132,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.54325063.54325069
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.55326961.55326967
 # environment
 HOMEBREW_PREFIX = /usr/local
 # automatic
@@ -168,7 +168,7 @@ http_proxy = http://127.0.0.1:7890
 # environment
 LANG = C
 # environment
-VSCODE_PID = 97511
+VSCODE_PID = 10389
 # environment
 RUSTUP_UPDATE_ROOT = https://mirrors.ustc.edu.cn/rust-static/rustup
 # variable set hash-table stats:
@@ -180,7 +180,7 @@ RUSTUP_UPDATE_ROOT = https://mirrors.ustc.edu.cn/rust-static/rustup
 
 # Directories
 
-# . (device 16777225, inode 57252993): 11 files, no impossibilities.
+# . (device 16777221, inode 57252993): 11 files, no impossibilities.
 
 # 11 files, no impossibilities in 1 directories.
 
@@ -254,7 +254,7 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Tue May 31 14:33:58 2022
+# Finished Make data base on Mon Jun  6 08:45:21 2022
 
  
 make: *** No rule to make target `all'.  Stop.

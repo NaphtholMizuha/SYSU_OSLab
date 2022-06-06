@@ -16,7 +16,7 @@ ASM_OBJ += $(ASM_SOURCE:$(SRCDIR)/utils/%.asm=%.o)
 OBJ += $(C_OBJ)
 OBJ += $(ASM_OBJ)
 
-build: mbr.bin bootloader.bin kernel.bin kernel.o
+build: mbr.bin bootloader.bin kernel.bin kernel.o kernel_gdb.o
 	dd if=mbr.bin of=$(RUNDIR)/hd.img bs=512 count=1 seek=0 conv=notrunc
 	dd if=bootloader.bin of=$(RUNDIR)/hd.img bs=512 count=5 seek=1 conv=notrunc
 	dd if=kernel.bin of=$(RUNDIR)/hd.img bs=512 count=145 seek=6 conv=notrunc
@@ -37,7 +37,10 @@ kernel.bin : kernel.o
 	objcopy -O binary kernel.o kernel.bin
 		
 kernel.o : entry.obj $(OBJ)
-	ld -o kernel.o -melf_i386 -N entry.obj $(OBJ) -Ttext 0xc0020000 -e enter_kernel 
+	ld -o kernel.o -melf_i386 -N entry.obj $(OBJ) -Ttext 0xc0020000 -e enter_kernel
+
+kernel_gdb.o : entry.obj $(OBJ)
+	ld -o kernel_gdb.o -melf_i386 -N entry.obj $(OBJ) -Ttext 0x20000 -e enter_kernel 
 	
 $(C_OBJ): $(C_SOURCE)
 	gcc $(C_FLAGS) -I $(INCLUDE_DIR) -c $(C_SOURCE)
@@ -58,7 +61,7 @@ docker:
 
 docker_run: docker run
 
-gdb:
+gdb: 
 	gdb -q -tui -x $(RUNDIR)/gdbinit
 
 clean:
